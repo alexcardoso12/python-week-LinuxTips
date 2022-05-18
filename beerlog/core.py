@@ -25,7 +25,7 @@ def add_beer_to_database(
 
     return True
 
-def get_beer_from_database() ->List[Beer]:
+def get_beer_from_database() -> List[Beer]:
     with get_session() as session:
         sql = select(Beer)
         ### return session.exec(sql) => correto para melhor desempenho!!
