@@ -1,15 +1,16 @@
 # from dataclasses import dataclass
 # from unicodedata import name
 
+from datetime import datetime
+from statistics import mean
+
 # @dataclass
 # Para validação dos dados utilzamos a biblioteca pydantic
 from typing import Optional
-from tomlkit import date
-from sqlmodel import select
-from sqlmodel import SQLModel, Field
+
 from pydantic import validator
-from statistics import mean
-from datetime import datetime
+from sqlmodel import Field, SQLModel, select
+from tomlkit import date
 
 
 class Beer(SQLModel, table=True):

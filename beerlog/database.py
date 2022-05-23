@@ -1,15 +1,17 @@
 import warnings
+
 from sqlalchemy.exc import SAWarning
 from sqlmodel.sql.expression import Select, SelectOfScalar
-warnings.filterwarnings('ignore', category=SAWarning)
+
+warnings.filterwarnings("ignore", category=SAWarning)
 SelectOfScalar.inherit_cache = True
 Select.inherit_cache = True
 
 
+from sqlmodel import Session, create_engine
 
-from sqlmodel import create_engine, Session
-from beerlog.config import settings
 from beerlog import models
+from beerlog.config import settings
 
 # oracle://
 # mysql://localhost:5555@user:pass/BDname
@@ -17,6 +19,7 @@ from beerlog import models
 engine = create_engine(settings.database.url)
 
 models.SQLModel.metadata.create_all(engine)
+
 
 def get_session():
     return Session(engine)
